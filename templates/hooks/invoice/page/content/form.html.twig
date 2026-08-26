@@ -1,0 +1,14 @@
+{% set form = hookable_metadata.context.form %}
+
+<div class="container-xl">
+    <div class="card mt-1">
+        <div class="card-body">
+            {{ component('invoice_form_type', {
+                initialFormData: form.vars.data,
+                checkError: not form.vars.valid
+            }) }}
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,8 @@
+{% set form = hookable_metadata.context.form %}
+
+{% form_theme form '@SyliusBootstrapAdminUi/shared/form_theme.html.twig' %}
+
+{{ form_start(form, {'action': path('app_register'), 'attr': {'class': 'ui large loadable form', 'novalidate': 'novalidate'}}) }}
+    {% hook 'form' with { form } %}
+    {{ form_row(form._token) }}
+{{ form_end(form, {'render_rest': false}) }}

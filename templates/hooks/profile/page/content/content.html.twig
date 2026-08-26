@@ -1,0 +1,994 @@
+<div class="card">
+    <div class="card-body">
+        <strong>{{ 'app.ui.api_token'|trans }}:</strong>
+        <pre class="bg-dark">{{ app.user.apiToken }}</pre>
+    </div>
+</div>
+
+
+<div class="accordion mt-5" id="accordionApi">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#clientPost"
+                    aria-expanded="true" aria-controls="collapseOne">
+                POST /api/client
+            </button>
+        </h2>
+        <div id="clientPost" class="accordion-collapse collapse" data-bs-parent="#accordionApi">
+            <div class="accordion-body">
+
+                <h2 class="h4 mt-5">Endpoint</h2>
+                <div class="alert alert-light border">
+                    <code>POST /api/client</code>
+                </div>
+
+                <h2 class="h4 mt-5">Headers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>Accept</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Authorization</code></td>
+                            <td><code>Bearer [apiToken]</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Content-Type</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Request Body</h2>
+
+                <pre class="bg-dark border rounded p-3"><code>{
+    "name": "Acme Ltd",
+    "address": "Main Street 10",
+    "code": "ACME001",
+    "vatCode": "LT123456789",
+    "email": "info@acme.example",
+    "mobile": "+37060000000"
+}</code></pre>
+
+                <h2 class="h4 mt-5">Parameters</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Validation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>1–255 characters, not blank</td>
+                        </tr>
+                        <tr>
+                            <td><code>address</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>code</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>vatCode</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>email</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters, valid email</td>
+                        </tr>
+                        <tr>
+                            <td><code>mobile</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">cURL Example</h2>
+
+                <pre class="bg-dark text-light rounded p-3"><code>curl -X POST "https://example.com/api/client" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer [apiToken]" \
+-d '{
+    "name": "Acme Ltd",
+    "address": "Main Street 10",
+    "code": "ACME001",
+    "vatCode": "LT123456789",
+    "email": "info@acme.example",
+    "mobile": "+37060000000"
+}'</code></pre>
+
+            </div>
+        </div>
+
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#clientPatch"
+                    aria-expanded="true" aria-controls="collapseOne">
+                PATCH /api/client/{id}
+            </button>
+        </h2>
+        <div id="clientPatch" class="accordion-collapse collapse" data-bs-parent="#accordionApi">
+            <div class="accordion-body">
+
+                <h2 class="h4 mt-5">Endpoint</h2>
+                <div class="alert alert-light border">
+                    <code>PATCH /api/client/{id}</code>
+                </div>
+
+                <h2 class="h4 mt-5">Headers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>Accept</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Authorization</code></td>
+                            <td><code>Bearer [apiToken]</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Content-Type</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Request Body</h2>
+
+                <pre class="bg-dark border rounded p-3"><code>{
+    "name": "Acme Ltd",
+    "address": "Main Street 10",
+    "vatCode": "LT123456789",
+    "email": "info@acme.example",
+    "mobile": "+37060000000"
+}</code></pre>
+
+                <h2 class="h4 mt-5">Parameters</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Validation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters, not blank</td>
+                        </tr>
+                        <tr>
+                            <td><code>address</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>vatCode</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>email</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters, valid email</td>
+                        </tr>
+                        <tr>
+                            <td><code>mobile</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">cURL Example</h2>
+
+                <pre class="bg-dark text-light rounded p-3"><code>curl -X PATCH "https://example.com/api/client/123" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer [apiToken]" \
+-d '{
+    "name": "Acme Ltd",
+    "address": "Main Street 10",
+    "vatCode": "LT123456789",
+    "email": "info@acme.example",
+    "mobile": "+37060000000"
+}'</code></pre>
+
+            </div>
+        </div>
+
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#clientGet"
+                    aria-expanded="true" aria-controls="collapseOne">
+                GET /api/client
+            </button>
+        </h2>
+        <div id="clientGet" class="accordion-collapse collapse" data-bs-parent="#accordionApi">
+            <div class="accordion-body">
+
+                <h2 class="h4 mt-5">Endpoint</h2>
+                <div class="alert alert-light border">
+                    <code>GET /api/client/find</code>
+                </div>
+
+                <h2 class="h4 mt-5">Headers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>Accept</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Authorization</code></td>
+                            <td><code>Bearer [apiToken]</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Content-Type</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Query Parameters</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Validation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>code</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">cURL Example</h2>
+
+                <pre class="bg-dark text-light rounded p-3"><code>curl -X POST "https://example.com//api/client/find?name=Petras%20Petraitis&amp;code=ABC123" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer [apiToken]" \
+</code></pre>
+
+            </div>
+        </div>
+
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#invoicePost"
+                    aria-expanded="true" aria-controls="collapseOne">
+                POST /api/invoice
+            </button>
+        </h2>
+        <div id="invoicePost" class="accordion-collapse collapse" data-bs-parent="#accordionApi">
+            <div class="accordion-body">
+
+                <h2 class="h4 mt-5">Endpoint</h2>
+                <div class="alert alert-light border">
+                    <code>POST /api/invoice</code>
+                </div>
+
+                <h2 class="h4 mt-5">Headers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>Accept</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Authorization</code></td>
+                            <td><code>Bearer [apiToken]</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Content-Type</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Request Body</h2>
+
+                <pre class="bg-dark border rounded p-3"><code>{
+    "clientId": 2,
+    "type": "standard",
+    "series": "SF",
+    "date": "2026-08-26",
+    "dateDue": "2026-09-25",
+    "comment": "Payment due within 30 days",
+    "status": "paid",
+    "items": [
+        {
+            "quantity": 2,
+            "unit": "pcs",
+            "price": 100.00,
+            "discount": 0
+        }
+    ]
+}</code></pre>
+
+                <h2 class="h4 mt-5">Parameters</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Validation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>clientId</code></td>
+                            <td>integer</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must reference an existing client</td>
+                        </tr>
+                        <tr>
+                            <td><code>type</code></td>
+                            <td>InvoiceType</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be a valid invoice type</td>
+                        </tr>
+                        <tr>
+                            <td><code>series</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be valid for the selected invoice type</td>
+                        </tr>
+                        <tr>
+                            <td><code>date</code></td>
+                            <td>string|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Valid date</td>
+                        </tr>
+                        <tr>
+                            <td><code>dateDue</code></td>
+                            <td>string|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Valid date</td>
+                        </tr>
+                        <tr>
+                            <td><code>comment</code></td>
+                            <td>string|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Optional comment</td>
+                        </tr>
+                        <tr>
+                            <td><code>status</code></td>
+                            <td>InvoiceStatus</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be a valid invoice status</td>
+                        </tr>
+                        <tr>
+                            <td><code>items</code></td>
+                            <td>array</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>At least 1 valid invoice line</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Invoice Items</h2>
+
+                <p>
+                    The <code>items</code> field must contain at least one invoice line.
+                    Each item has the following fields:
+                </p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Validation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>serviceId</code></td>
+                            <td>integer|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Must reference an existing service</td>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>amount</code></td>
+                            <td>float</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be greater than 0</td>
+                        </tr>
+                        <tr>
+                            <td><code>unit</code></td>
+                            <td>UnitType</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be a valid unit</td>
+                        </tr>
+                        <tr>
+                            <td><code>price</code></td>
+                            <td>float</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Required</td>
+                        </tr>
+                        <tr>
+                            <td><code>discount</code></td>
+                            <td>float</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be 0 or greater</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Invoice Type</h2>
+
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>standard</code></td>
+                        <td>Standard invoice</td>
+                    </tr>
+                    <tr>
+                        <td><code>credit</code></td>
+                        <td>Credit / refund invoice</td>
+                    </tr>
+                    <tr>
+                        <td><code>prepayment</code></td>
+                        <td>Prepayment invoice</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="h4 mt-5">Invoice Status</h2>
+
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>paid</code></td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td><code>not_paid</code></td>
+                        <td>Not paid</td>
+                    </tr>
+                    <tr>
+                        <td><code>expired</code></td>
+                        <td>Expired</td>
+                    </tr>
+                    <tr>
+                        <td><code>draft</code></td>
+                        <td>Draft</td>
+                    </tr>
+                    <tr>
+                        <td><code>closed</code></td>
+                        <td>Closed</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="h4 mt-5">Units</h2>
+
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>hour</code></td>
+                        <td>Hour</td>
+                    </tr>
+                    <tr>
+                        <td><code>pcs</code></td>
+                        <td>Pieces</td>
+                    </tr>
+                    <tr>
+                        <td><code>km</code></td>
+                        <td>Kilometre</td>
+                    </tr>
+                    <tr>
+                        <td><code>m</code></td>
+                        <td>Metre</td>
+                    </tr>
+                    <tr>
+                        <td><code>m2</code></td>
+                        <td>Square metre</td>
+                    </tr>
+                    <tr>
+                        <td><code>kg</code></td>
+                        <td>Kilogram</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="h4 mt-5">cURL Example</h2>
+
+                <pre class="bg-dark text-light rounded p-3"><code>curl -X POST "https://example.com/api/invoice" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer [apiToken]" \
+-d '{
+    "clientId": 2,
+    "type": "standard",
+    "series": "SF",
+    "date": "2026-08-26",
+    "dateDue": "2026-09-25",
+    "comment": "Payment due within 30 days",
+    "status": "paid",
+    "items": [
+        {
+            "quantity": 2,
+            "unit": "pcs",
+            "price": 100.00,
+            "discount": 0
+        }
+    ]
+}'</code></pre>
+
+            </div>
+        </div>
+
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#invoicePatch"
+                    aria-expanded="true" aria-controls="collapseOne">
+                PATCH /api/invoice/{id}
+            </button>
+        </h2>
+        <div id="invoicePatch" class="accordion-collapse collapse" data-bs-parent="#accordionApi">
+            <div class="accordion-body">
+
+                <h2 class="h4 mt-5">Endpoint</h2>
+                <div class="alert alert-light border">
+                    <code>PATCH /api/invoice/{id}</code>
+                </div>
+
+                <h2 class="h4 mt-5">Headers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>Accept</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Authorization</code></td>
+                            <td><code>Bearer [apiToken]</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Content-Type</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Request Body</h2>
+
+                <pre class="bg-dark border rounded p-3"><code>{
+    "clientId": 2,
+    "date": "2026-08-26",
+    "dateDue": "2026-09-25",
+    "comment": "Payment due within 30 days",
+    "status": "paid",
+    "items": [
+        {
+            "quantity": 2,
+            "unit": "pcs",
+            "price": 100.00,
+            "discount": 0
+        }
+    ]
+}</code></pre>
+
+                <h2 class="h4 mt-5">Parameters</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Validation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>clientId</code></td>
+                            <td>integer|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>1–255 and must reference an existing client</td>
+                        </tr>
+                        <tr>
+                            <td><code>date</code></td>
+                            <td>string|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Valid date</td>
+                        </tr>
+                        <tr>
+                            <td><code>dateDue</code></td>
+                            <td>string|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Valid date</td>
+                        </tr>
+                        <tr>
+                            <td><code>comment</code></td>
+                            <td>string|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Optional comment</td>
+                        </tr>
+                        <tr>
+                            <td><code>status</code></td>
+                            <td>InvoiceStatus|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Must be a valid invoice status</td>
+                        </tr>
+                        <tr>
+                            <td><code>items</code></td>
+                            <td>array|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>If provided, must contain at least 1 valid invoice line</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Invoice Items</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Validation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>serviceId</code></td>
+                            <td>integer|null</td>
+                            <td><span class="badge text-bg-secondary">No</span></td>
+                            <td>Must reference an existing service</td>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>string</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>1–255 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>amount</code></td>
+                            <td>float</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be greater than 0</td>
+                        </tr>
+                        <tr>
+                            <td><code>unit</code></td>
+                            <td>UnitType</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be a valid unit</td>
+                        </tr>
+                        <tr>
+                            <td><code>price</code></td>
+                            <td>float</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Required</td>
+                        </tr>
+                        <tr>
+                            <td><code>discount</code></td>
+                            <td>float</td>
+                            <td><span class="badge text-bg-danger">Yes</span></td>
+                            <td>Must be 0 or greater</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Invoice Type</h2>
+
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>standard</code></td>
+                        <td>Standard invoice</td>
+                    </tr>
+                    <tr>
+                        <td><code>credit</code></td>
+                        <td>Credit / refund invoice</td>
+                    </tr>
+                    <tr>
+                        <td><code>prepayment</code></td>
+                        <td>Prepayment invoice</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="h4 mt-5">Invoice Status</h2>
+
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>paid</code></td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td><code>not_paid</code></td>
+                        <td>Not paid</td>
+                    </tr>
+                    <tr>
+                        <td><code>expired</code></td>
+                        <td>Expired</td>
+                    </tr>
+                    <tr>
+                        <td><code>draft</code></td>
+                        <td>Draft</td>
+                    </tr>
+                    <tr>
+                        <td><code>closed</code></td>
+                        <td>Closed</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="h4 mt-5">Units</h2>
+
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>hour</code></td>
+                        <td>Hour</td>
+                    </tr>
+                    <tr>
+                        <td><code>pcs</code></td>
+                        <td>Pieces</td>
+                    </tr>
+                    <tr>
+                        <td><code>km</code></td>
+                        <td>Kilometre</td>
+                    </tr>
+                    <tr>
+                        <td><code>m</code></td>
+                        <td>Metre</td>
+                    </tr>
+                    <tr>
+                        <td><code>m2</code></td>
+                        <td>Square metre</td>
+                    </tr>
+                    <tr>
+                        <td><code>kg</code></td>
+                        <td>Kilogram</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2 class="h4 mt-5">cURL Example</h2>
+
+                <pre class="bg-dark text-light rounded p-3"><code>curl -X PATCH "https://example.com/api/invoice/123" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer [apiToken]" \
+-d '{
+    "clientId": 2,
+    "date": "2026-08-26",
+    "dateDue": "2026-09-25",
+    "comment": "Payment due within 30 days",
+    "status": "paid"
+}'</code></pre>
+
+            </div>
+        </div>
+
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#invoiceDocumentGet"
+                    aria-expanded="true" aria-controls="collapseOne">
+                GET /api/invoice/{id}/document
+            </button>
+        </h2>
+        <div id="invoiceDocumentGet" class="accordion-collapse collapse" data-bs-parent="#accordionApi">
+            <div class="accordion-body">
+
+                <h2 class="h4 mt-5">Endpoint</h2>
+                <div class="alert alert-light border">
+                    <code>GET /api/invoice/{id}/document</code>
+                </div>
+
+                <h2 class="h4 mt-5">Headers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>Accept</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Authorization</code></td>
+                            <td><code>Bearer [apiToken]</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><code>Content-Type</code></td>
+                            <td><code>application/json</code></td>
+                            <td>Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="h4 mt-5">Response</h2>
+
+                <p>
+                    Returns the requested invoice as a PDF file.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Content-Type:</strong> <code>application/pdf</code>
+                </div>
+
+                <h2 class="h4 mt-5">cURL Example</h2>
+
+                <pre class="bg-dark text-light rounded p-3"><code>curl -X GET "https://example.com/api/invoice/123/document" \
+-H "Accept: application/pdf" \
+-H "Authorization: Bearer [apiToken]" \
+-o invoice-123.pdf</code></pre>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

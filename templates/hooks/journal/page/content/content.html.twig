@@ -1,0 +1,94 @@
+<div class="card">
+    <div class="card-body">
+        <form method="GET" class="d-flex gap-2">
+            <select name="year" class="form-control">
+                {% set thisYear = ''|date('Y') %}
+                {% for year in range(thisYear - 10, thisYear)|reverse %}
+                    <option value="{{ year }}" {% if hookable_metadata.context.year == year %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="btn btn-primary">{{ 'sylius.ui.filter'|trans }}</button>
+        </form>
+    </div>
+</div>
+
+<div class="card mt-3">
+        <table class="table bg-transparent table-hover table-responsive w-100 table-transparent table-striped">
+            <thead>
+            <tr>
+                <th>{{ 'app.ui.journal.number'|trans }}</th>
+                <th>{{ 'app.ui.journal.date'|trans }}</th>
+                <th>{{ 'app.ui.journal.document_number'|trans }}</th>
+                <th>{{ 'app.ui.journal.revenue'|trans }}</th>
+                <th colspan="3" class="text-wrap">{{ 'app.ui.journal.expenses'|trans }}</th>
+            </tr>
+            <tr>
+                <th colspan="4"></th>
+                <th class="text-wrap">{{ 'app.ui.journal.goods_acquisition'|trans }}</th>
+                <th class="text-wrap">{{ 'app.ui.journal.asset_operation'|trans }}</th>
+                <th class="text-wrap">{{ 'app.ui.journal.taxes_fees'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                {% set revenueTotal = 0 %}
+                {% set goodsAcquisitionTotal = 0 %}
+                {% set assetOperationTotal = 0 %}
+                {% set taxesFeesTotal = 0 %}
+
+                {% for key, row in hookable_metadata.context.data %}
+                    <tr>
+                        <td class="text-nowrap">{{ key+1 }}</td>
+                        <td class="text-nowrap">{{ row.date }}</td>
+                        <td class="text-nowrap">{{ row.document_number }}</td>
+                        <td class="text-nowrap">
+                            {% if row.amount %}
+                                {{ row.amount }} &euro;
+                            {% endif %}
+                        </td>
+                        <td class="text-nowrap">
+                            {% if row.goods_acquisition %}
+                                {{ row.goods_acquisition }} &euro;
+                            {% endif %}
+                        </td>
+                        <td class="text-nowrap">
+                            {% if row.asset_operation %}
+                                {{ row.asset_operation }} &euro;
+                            {% endif %}
+                        </td>
+                        <td class="text-nowrap">
+                            {% if row.taxes_fees %}
+                                {{ row.taxes_fees }} &euro;
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    {% if row.amount %}
+                        {% set revenueTotal = revenueTotal + row.amount %}
+                    {% endif %}
+                    {% if row.goods_acquisition %}
+                        {% set goodsAcquisitionTotal = goodsAcquisitionTotal + row.goods_acquisition %}
+                    {% endif %}
+                    {% if row.asset_operation %}
+                        {% set assetOperationTotal = assetOperationTotal + row.asset_operation %}
+                    {% endif %}
+                    {% if row.taxes_fees %}
+                        {% set taxesFeesTotal = taxesFeesTotal + row.taxes_fees %}
+                    {% endif %}
+
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>{{ revenueTotal }} &euro;</th>
+                    <th>{{ goodsAcquisitionTotal }} &euro;</th>
+                    <th>{{ assetOperationTotal }} &euro;</th>
+                    <th>{{ taxesFeesTotal }} &euro;</th>
+                </tr>
+            </tfoot>
+        </table>
+</div>

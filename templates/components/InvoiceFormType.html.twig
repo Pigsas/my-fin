@@ -1,0 +1,63 @@
+<div{{ attributes }}>
+
+    {% form_theme form with [
+        '@SyliusBootstrapAdminUi/shared/form_theme.html.twig',
+        'hooks/invoice/page/content/form_theme.html.twig'
+    ] %}
+
+    {{ form_start(form, {
+        attr: {
+            'id': 'app_invoice',
+            novalidate: '',
+        }
+    }) }}
+    {{ form_widget(form._token, {'attr': {'data-model': 'norender|*'}}) }}
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.client) }}
+        </div>
+    </div>
+
+
+    {% if form.vars.data.id is null %}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.type) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.series) }}
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.documentNumber, { attr: {
+                readonly:''
+            }}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.date) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.dueDate) }}
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+
+    {{ form_row(form.lines) }}
+
+    {{ form_row(form.comment) }}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.status) }}
+        </div>
+    </div>
+
+    {{ form_end(form, {
+        render_rest: false
+    }) }}
+</div>

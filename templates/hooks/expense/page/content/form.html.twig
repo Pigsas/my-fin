@@ -1,0 +1,123 @@
+{% set form = hookable_metadata.context.form %}
+
+{% form_theme form '@SyliusBootstrapAdminUi/shared/form_theme.html.twig' %}
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.client) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.type) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        {{ form_row(form.date) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(form.documentNumber) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <div class="mb-3 field">
+            {{ form_label(form.total) }}
+
+            <div class="input-group w-100">
+                {{ form_widget(form.total, {attr: {
+                    onchange: 'updateCalculations()'
+                }}) }}
+                <div class="input-group-append">
+                    <span class="input-group-text">&euro;</span>
+                </div>
+            </div>
+            {{ form_errors(form.total) }}
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="mb-3 field">
+            {{ form_label(form.vat) }}
+
+            <div class="input-group w-100">
+                {{ form_widget(form.vat, {attr: {
+                    onchange: 'updateCalculations()'
+                }}) }}
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            {{ form_errors(form.vat) }}
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="mb-3 field">
+            <label for="app_expense_total_wo_vat" class="form-label">app.ui.total_wo_vat</label>
+
+            <div class="input-group w-100">
+                <input type="text" id="app_expense_total_wo_vat" class="form-control" readonly>
+                <div class="input-group-append">
+                    <span class="input-group-text">&euro;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="mb-3 field">
+            <label for="app_expense_vat_amount" class="form-label">app.ui.vat_amount</label>
+
+            <div class="input-group w-100">
+                <input type="text" id="app_expense_vat_amount" class="form-control" readonly>
+                <div class="input-group-append">
+                    <span class="input-group-text">&euro;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        {{ form_row(form.status) }}
+    </div>
+    <div class="col-6">
+    </div>
+</div>
+
+{{ form_row(form.comment) }}
+
+{% if form.vars.data and form.vars.data.id and form.vars.data.file %}
+    <div class="text-center">
+    {% if form.vars.data.file.extension is same as 'pdf' %}
+        <embed src="{{ path('app_expense_get_file', {id: form.vars.data.id}) }}" width="500" height="600"
+               type="application/pdf">
+
+    {% else %}
+        <img src="{{ path('app_expense_get_file', {id: form.vars.data.id}) }}" width="500" height="600" style="object-fit: contain" />
+    {% endif %}
+    </div>
+{% endif %}
+{{ form_row(form.file) }}
+
+<script>
+    function updateCalculations() {
+        const totalEl = document.getElementById('{{ form.total.vars.id }}')
+        const vatEl = document.getElementById('{{ form.vat.vars.id }}')
+        const totalWoVatEl = document.getElementById('app_expense_total_wo_vat')
+        const vatAmountEl = document.getElementById('app_expense_vat_amount')
+
+        const totalWoVat = (totalEl.value / (1 + vatEl.value / 100)).toFixed(2)
+        const vatAmount = (totalEl.value - totalWoVat).toFixed(2)
+
+        totalWoVatEl.value = totalWoVat
+        vatAmountEl.value = vatAmount
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCalculations()
+    });
+</script>

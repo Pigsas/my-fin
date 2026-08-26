@@ -1,0 +1,22 @@
+{% set form = hookable_metadata.context.form %}
+
+{% form_theme form '@SyliusBootstrapAdminUi/shared/form_theme.html.twig' %}
+
+{{ form_start(form) }}
+{% for children in form.children %}
+    {% if children.vars.name is not same as '_token' %}
+        <div class="card">
+            <div class="card-header">
+                {{ form_label(children) }}
+            </div>
+            <div class="card-body p-2">
+                {{ form_widget(children) }}
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary float-end">{{ 'app.ui.save'|trans }}</button>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+{{ form_end(form) }}

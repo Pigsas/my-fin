@@ -1,0 +1,139 @@
+sylius.form.collection.add: Pridėti
+sylius.form.collection.delete: Šalinti
+vich_uploader.form_label.delete_confirm: 'Ištrinti?'
+vich_uploader.link.download: Parsisiųsti
+app.ui.paid: Apmokėta
+app.ui.not_paid: Neapmokėta
+app.ui.hour: Val.
+app.ui.pcs: Vnt.
+app.ui.km: Km
+app.ui.m: M
+app.ui.m2: M²
+app.ui.kg: Kg
+app.ui.expired: Pasibaigęs
+app.ui.draft: Juodraštis
+app.ui.closed: Uždarytas
+app.ui.invoice: 'Sąskaita faktūra'
+app.ui.refund: Grąžinimas
+app.ui.pre_paid: 'Iš anksto apmokėta'
+app.ui.goods_acquisition: 'Prekių įsigijimas'
+app.ui.asset_operation: 'Turto operacija'
+app.ui.taxes_fees: 'Mokesčiai ir rinkliavos'
+sylius.ui.administration_panel_login: 'Administravimo skydelio prisijungimas'
+sylius.ui.dashboard: 'Valdymo skydas'
+app.ui.journal.number: 'Eilės nr.'
+app.ui.journal.date: Data
+app.ui.journal.document_number: 'Dokumento numeris'
+app.ui.journal.revenue: 'Pajamų suma (Eurais)'
+app.ui.journal.expenses: 'Išlaidos – leidžiami atskaitymai, susiję su individualios veiklos pajamų gavimu arba uždirbimu'
+app.ui.journal.goods_acquisition: 'Prekių, medžiagų, žaliavų, detalių ir kt. įsigijimo'
+app.ui.journal.asset_operation: 'Ilgalaikio turto eksploatavimo ir kitos išlaidos'
+app.ui.journal.taxes_fees: 'Mokesčiai ir rinkliavos'
+sylius.ui.create_your_account: 'Sukurkite savo paskyrą'
+sylius.ui.register: Registruotis
+sylius.ui.clients: Klientai
+sylius.ui.invoices: Sąskaitos
+sylius.ui.services: Paslaugos
+sylius.ui.expenses: Išlaidos
+sylius.ui.journal: Bendras žurnalas
+app.ui.journal: Bendras žurnalas
+sylius.ui.search_menu: Ieškoti
+sylius.ui.hello: Sveiki
+sylius.ui.logout: Atsijungti
+app.ui.clients: Klientai
+sylius.ui.filters: Filtrai
+sylius.ui.create: Sukurti
+app.ui.search: Paieška
+sylius.ui.contains: Sudėtyje yra
+sylius.ui.not_contains: Sudėtyje nėra
+sylius.ui.equal: Lygus
+sylius.ui.not_equal: Nelygus
+sylius.ui.empty: Tusčias
+sylius.ui.not_empty: Ne tusčias
+sylius.ui.starts_with: Prasideda su
+sylius.ui.end_with: Baigiasi su
+sylius.ui.in: Yra
+sylius.ui.not_in: Nėra
+sylius.ui.value: Reikšmė
+sylius.ui.filter: Filtruoti
+sylius.ui.reset: Atsatyti
+sylius.ui.show: Rodyti
+app.ui.name: Pavadinimas
+app.ui.code: Įmonės/Asmens kodas
+app.ui.vat_code: PVM kodas
+app.ui.total_invoices: Iš viso sąskaitų
+sylius.ui.actions: Veiksmai
+sylius.ui.edit: Koreguoti
+sylius.ui.pagination.number_of_results: 'Rodomi rezultatai nuo %from% iki %to% iš %total%'
+sylius.ui.new: Naujas
+app.ui.client: Klientas
+sylius.ui.cancel: Atšaukti
+app.ui.address: Adresas
+app.ui.contact: Kontaktas
+app.ui.email: El. paštas
+app.ui.mobile: Mobilus telefonas
+app.ui.document_number: Documento numeris
+app.ui.date: Data
+app.ui.status: Būsena
+app.ui.total: Iš viso
+sylius.ui.all: Visi
+app.ui.choose_client: Pasirinkite klientą
+app.ui.type: Tipas
+app.ui.series: Serija
+app.ui.due_date: Apmokėti iki
+app.ui.comment: Komentaras
+app.ui.lines: Eilutės
+app.ui.service: Paslauga
+app.ui.amount: Kiekis
+app.ui.price: Kaina
+app.ui.discount: Nuolaida
+app.ui.choose_service: Pasirinkite paslaugą
+app.ui.services: Paslaugos
+sylius.ui.no_results: Nėra resultatų
+sylius.ui.no_results_adjust_your_search: Pagal jūsų paieška nėra resultatų
+app.ui.expenses: Išlaidos
+app.ui.expense: Išlaida
+app.ui.vat: PVM
+app.ui.total_wo_vat: Iš viso (be PVM)
+app.ui.vat_amount: PVM suma
+app.ui.document: Dokumentas
+sylius.ui.index: Indeksas
+sylius.ui.ends_with: Baigiasi su
+sylius.ui.delete: Ištrinti
+sylius.ui.are_your_sure_you_want_to_perform_this_action: Ar tikrai norite atlikti šį veiksmą
+app.ui.invoices: Sąskaitos
+sylius.ui.update: Koreguoti
+Add: Pridėti
+app.ui.settings: Nustatymai
+app.ui.company_name: Pavadinimas
+app.ui.company_code: Kodas
+app.ui.company_email: El. paštas
+app.ui.company_phone: Mobilus telefonas
+app.ui.bank_account: Banko saskaitos numeris
+app.ui.bank_name: Banko pavadinimas
+app.ui.save: Išsaugoti
+app.ui.settings_was_saved: Nustatymai buvo išsaugoti
+sylius.ui.success: 'Pavyko'
+app.ui.bill_to: Pirkėjas
+app.ui.payment_details: Mokėjimo informacija
+app.ui.unit_price: Vieneto kaina
+app.ui.subtotal: Tarpinė suma
+app.ui.total_due: Bendra mokėtina suma
+app.ui.bank: Bankas
+app.ui.account: Banko saskaita
+app.ui.credit: Kreditinė sąskaita faktūra
+app.ui.prepayment: Išankstinė sąskaita faktūra
+app.ui.total_credit: Bendra gražinama suma
+sylius.ui.login_to_your_account: Prisijungti
+sylius.form.login.username: Slapyvardis
+sylius.form.login.password: Slaptažodis
+sylius.form.login.remember_me: Prisimink mane
+sylius.ui.login: Prisijungti
+app.ui.username: Slapyvardis
+app.ui.password: Slaptažodis
+app.ui.repeat_password: Pakartoti slaptažodį
+app.ui.password.mismatch: Slaptažodžiai nesutampa
+app.ui.profile: Profilis
+app.ui.api_token: API raktas
+sylius.ui.profile: Profilis
+sylius.ui.settings: Nustatymai

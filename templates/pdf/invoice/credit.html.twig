@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #2b2b2b;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .invoice-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px;
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            border-bottom: 3px solid #1a1a1a;
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        /* ---------- Bill To ---------- */
+        .parties {
+            margin-bottom: 36px;
+        }
+
+        /* ---------- Table ---------- */
+        table.items {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        table.items thead th {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        table.items thead th.num {
+            text-align: right;
+        }
+
+        table.items tbody td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 13.5px;
+        }
+
+        table.items tbody td.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        table.items tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* ---------- Totals ---------- */
+
+
+
+
+
+        /* ---------- Footer ---------- */
+        .notes {
+            border-top: 1px solid #eaeaea;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .notes h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 6px 0;
+        }
+
+        .notes p {
+            font-size: 12.5px;
+            color: #555;
+            margin: 2px 0;
+        }
+
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 11px;
+            margin-top: 32px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .invoice-box {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="invoice-box">
+
+    <!-- Header -->
+    <div class="header">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%" valign="top">
+                    <div class="company-info">
+                        <p style="color: #555;font-size: 24px;font-weight: 700;margin: 0 0 6px 0;letter-spacing: -0.5px;">{{ settings_instance('company').name }}</p>
+                        <p style="margin: 2px 0;color: #555;font-size: 13px;">{{ settings_instance('company').code }}</p>
+                        <p style="margin: 2px 0;color: #555;font-size: 13px;">{{ settings_instance('company').email }} | {{ settings_instance('company').phone }}</p>
+                    </div>
+                </td>
+                <td style="width: 50%" align="right" valign="top">
+                    <div class="invoice-meta">
+                        <h1 style="text-transform: uppercase;font-size: 30px;margin: 0 0 8px 0;letter-spacing: 1px;color: #1a1a1a;font-weight: 700;">{{ 'app.ui.credit'|trans }}</h1>
+                        <table style="margin-left: auto;border-collapse: collapse;">
+                            <tr>
+                                <td class="label" style="font-size: 13px;color: #777;text-align: right;padding-left: 0;">{{ 'app.ui.credit'|trans }}</td>
+                                <td class="value" style="padding: 2px 0 2px 16px;font-size: 13px;text-align: right;font-weight: 600;">{{ invoice.documentNumber }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label" style="font-size: 13px;color: #777;text-align: right;padding-left: 0;">{{ 'app.ui.date'|trans }}</td>
+                                <td class="value" style="padding: 2px 0 2px 16px;font-size: 13px;text-align: right;font-weight: 600;">{{ invoice.date|date('Y-m-d') }}</td>
+                            </tr>
+                            <tr>
+                                <td class="label" style="font-size: 13px;color: #777;text-align: right;padding-left: 0;">{{ 'app.ui.due_date'|trans }}</td>
+                                <td class="value" style="padding: 2px 0 2px 16px;font-size: 13px;text-align: right;font-weight: 600;">{{ invoice.dueDate|date('Y-m-d') }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Bill To / From -->
+    <div class="parties">
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 50%" align="left" valign="top">
+                    <div class="block">
+                        <h3 style="font-size: 11px;text-transform: uppercase;letter-spacing: 1px;color: #999;margin: 0 0 8px 0;">{{ 'app.ui.bill_to'|trans }}</h3>
+                        <p style="margin: 2px 0;font-size: 13.5px;font-weight: 700;font-size: 15px;margin-bottom: 4px;">{{ invoice.client.name }}</p>
+                        {% if invoice.client.code is not empty %}
+                            <p style="margin: 2px 0;font-size: 13.5px;">{{ invoice.client.code }}</p>
+                        {% endif %}
+                        {% if invoice.client.vatCode is not empty %}
+                            <p style="margin: 2px 0;font-size: 13.5px;">{{ 'app.ui.vat_code'|trans }}: {{ invoice.client.vatCode }}</p>
+                        {% endif %}
+                        {% if invoice.client.address is not empty %}
+                            <p style="margin: 2px 0;font-size: 13.5px;">{{ invoice.client.address }}</p>
+                        {% endif %}
+                        {% if invoice.client.email is not empty %}
+                            <p style="margin: 2px 0;font-size: 13.5px;">{{ invoice.client.email }}</p>
+                        {% endif %}
+                        {% if invoice.client.mobile is not empty %}
+                            <p style="margin: 2px 0;font-size: 13.5px;">{{ invoice.client.mobile }}</p>
+                        {% endif %}
+                    </div>
+                </td>
+
+                <td style="width: 50%" align="left" valign="top">
+                    <div class="block">
+                        <h3 style="font-size: 11px;text-transform: uppercase;letter-spacing: 1px;color: #999;margin: 0 0 8px 0;">{{ 'app.ui.payment_details'|trans }}</h3>
+                        <p style="margin: 2px 0;font-size: 13.5px;"><strong>{{ 'app.ui.bank'|trans }}:</strong> {{ settings_instance('company').bankName }}</p>
+                        <p style="margin: 2px 0;font-size: 13.5px;"><strong>{{ 'app.ui.account'|trans }}:</strong> {{ settings_instance('company').bankAccount }}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Line Items -->
+    <table class="items">
+        <thead>
+        <tr>
+            <th style="">{{ 'app.ui.name'|trans }}</th>
+            <th class="num">{{ 'app.ui.amount'|trans }}</th>
+            <th class="num">{{ 'app.ui.unit_price'|trans }}</th>
+            <th class="num">{{ 'app.ui.total'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Repeat this row for each line item -->
+        {% for line in invoice.lines %}
+        <tr>
+            <td style="white-space: wrap; word-wrap: break-word; width: 350px">{{ line.name }}</td>
+            <td class="num">{{ line.amount }} {{ line.unit|trans }}</td>
+            <td class="num">{{ line.price|format_currency('EUR') }}</td>
+            <td class="num">{{ line.total|format_currency('EUR') }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Totals -->
+    <table style="width: 100%">
+        <tr>
+            <td style="width: 50%"></td>
+            <td style="width: 50%" align="right" valign="top">
+                <div style="margin-bottom: 40px;">
+                    <table style="width: 100%;border-collapse: collapse;">
+                        <tr>
+                            <td align="left" style="padding: 6px 0;font-size: 13.5px;color: #666;">{{ 'app.ui.subtotal'|trans }}</td>
+                            <td style="padding: 6px 0;font-size: 13.5px;text-align: right;font-variant-numeric: tabular-nums;">{{ invoice.subTotal|format_currency('EUR') }}</td>
+                        </tr>
+                        <tr class="grand-total">
+                            <td align="left" style="color: #666;border-top: 2px solid #1a1a1a;padding-top: 10px;font-size: 17px;font-weight: 700;">
+                                {{ 'app.ui.total_credit'|trans }}</td>
+                            <td style="text-align: right;font-variant-numeric: tabular-nums;border-top: 2px solid #1a1a1a;padding-top: 10px;font-size: 17px;font-weight: 700;">{{ invoice.total|format_currency('EUR') }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Notes / Terms -->
+    {% if invoice.comment is not empty %}
+    <div class="notes">
+        <h3>{{ 'app.ui.notes'|trans }}</h3>
+        <p>{{ invoice.comment }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

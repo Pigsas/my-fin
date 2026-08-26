@@ -1,0 +1,17 @@
+{% set form = hookable_metadata.context.form %}
+
+{% form_theme form '@SyliusBootstrapAdminUi/shared/form_theme.html.twig' %}
+
+{{ form_row(form.name) }}
+<div class="mb-3 field">
+    {{ form_label(form.price) }}
+
+    <div class="input-group w-100">
+        {{ form_widget(form.price) }}
+        <div class="input-group-append">
+            <span class="input-group-text">&euro;</span>
+        </div>
+    </div>
+    {{ form_errors(form.price) }}
+</div>
+{{ form_row(form.comment) }}

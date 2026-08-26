@@ -1,0 +1,105 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.base#stylesheets':
+            custom:
+                template: 'hooks/style.html.twig'
+
+        'app.security.register':
+            page:
+                template: '@SyliusBootstrapAdminUi/security/common/page.html.twig'
+        'app.security.register.page':
+            logo:
+                template: '@SyliusBootstrapAdminUi/security/common/logo.html.twig'
+            content:
+                template: '@SyliusBootstrapAdminUi/security/common/content.html.twig'
+        'app.security.register.page.logo':
+            image:
+                template: '@SyliusBootstrapAdminUi/security/common/logo/image.html.twig'
+        'app.security.register.page.content':
+            header:
+                template: 'hooks/register/page/content/header.html.twig'
+            flashes:
+                template: '@SyliusBootstrapAdminUi/shared/crud/common/content/flashes.html.twig'
+            form:
+                template: 'hooks/register/page/content/form.html.twig'
+        'app.security.register.page.content.form':
+            username:
+                template: 'hooks/register/page/content/form/username.html.twig'
+            password:
+                template: 'hooks/register/page/content/form/password.html.twig'
+            submit:
+                template: 'hooks/register/page/content/form/submit.html.twig'
+
+        'sylius_admin.client.create.content.form.sections':
+            general:
+                template: 'hooks/client/page/content/form.html.twig'
+
+        'sylius_admin.client.update.content.form.sections':
+            general:
+                template: 'hooks/client/page/content/form.html.twig'
+
+        'sylius_admin.invoice.create.content':
+            form:
+                template: 'hooks/invoice/page/content/form.html.twig'
+
+        'sylius_admin.invoice.update.content':
+            form:
+                template: 'hooks/invoice/page/content/form.html.twig'
+
+        'sylius_admin.service.create.content.form.sections':
+            general:
+                template: 'hooks/service/page/content/form.html.twig'
+
+        'sylius_admin.service.update.content.form.sections':
+            general:
+                template: 'hooks/service/page/content/form.html.twig'
+
+        'sylius_admin.expense.create.content.form.sections':
+            general:
+                template: 'hooks/expense/page/content/form.html.twig'
+
+        'sylius_admin.expense.update.content.form.sections':
+            general:
+                template: 'hooks/expense/page/content/form.html.twig'
+
+        'sylius_admin.journal.index.content.grid':
+            body:
+                template: 'hooks/journal/page/content/content.html.twig'
+
+        'sylius_admin.journal.index.content.header.title_block':
+            title:
+                template: '@SyliusBootstrapAdminUi/shared/crud/common/content/header/title_block/title.html.twig'
+                configuration:
+                    title: 'app.ui.journal'
+
+        'sylius_admin.journal.index.content.header':
+            breadcrumbs:
+                enabled: false
+
+        'sylius_admin.settings.index.content.grid':
+            body:
+                template: 'hooks/settings/page/content/content.html.twig'
+
+        'sylius_admin.settings.index.content.header.title_block':
+            title:
+                template: '@SyliusBootstrapAdminUi/shared/crud/common/content/header/title_block/title.html.twig'
+                configuration:
+                    title: 'app.ui.settings'
+
+        'sylius_admin.settings.index.content.header':
+            breadcrumbs:
+                enabled: false
+
+        'sylius_admin.profile.index.content.grid':
+            body:
+                template: 'hooks/profile/page/content/content.html.twig'
+
+        'sylius_admin.profile.index.content.header.title_block':
+            title:
+                template: '@SyliusBootstrapAdminUi/shared/crud/common/content/header/title_block/title.html.twig'
+                configuration:
+                    title: 'app.ui.profile'
+
+        'sylius_admin.profile.index.content.header':
+            breadcrumbs:
+                enabled: false

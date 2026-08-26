@@ -1,0 +1,9 @@
+{% extends '@SyliusAdminUi/base.html.twig' %}
+
+{% block title %}
+    {{ 'sylius.ui.settings'|trans }} {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% hook ['sylius_admin.settings.index', 'sylius_admin.common.index'] %}
+{% endblock %}

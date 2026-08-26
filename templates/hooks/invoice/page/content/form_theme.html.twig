@@ -1,0 +1,71 @@
+{%- block _app_invoice_lines_entry_row -%}
+        <div class="invoice-line card p-2 mb-3" >
+            <div class="invoice-line-service">{{ form_row(form.service) }}</div>
+            <div class="invoice-line-name">{{ form_row(form.name) }}</div>
+            <div class="invoice-line-amount">
+                <div class="mb-3 field">
+                    {{ form_label(form.amount) }}
+
+                    <div class="input-group">
+                        {{ form_widget(form.amount) }}
+                        {{ form_widget(form.unit, { attr: {
+                            style: 'padding-right: 30px'
+                        } }) }}
+                    </div>
+
+                    {{ form_errors(form.unit) }}
+                    {{ form_errors(form.amount) }}
+
+                </div>
+            </div>
+            <div class="invoice-line-price">
+                <div class="mb-3 field">
+                    {{ form_label(form.price) }}
+
+                    <div class="input-group w-100">
+                        {{ form_widget(form.price) }}
+                        <div class="input-group-append">
+                            <span class="input-group-text">&euro;</span>
+                        </div>
+                    </div>
+                    {{ form_errors(form.price) }}
+                </div>
+            </div>
+            <div class="invoice-line-discount">
+                <div class="mb-3 field">
+                    {{ form_label(form.discount) }}
+
+                    <div class="input-group w-100">
+                        {{ form_widget(form.discount) }}
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    {{ form_errors(form.discount) }}
+                </div>
+            </div>
+            <div class="invoice-line-total">
+                <div class="mb-3 field">
+                    {{ form_label(form.total) }}
+
+                    <div class="input-group w-100">
+                        {{ form_widget(form.total, {attr: {
+                            readonly: '',
+                        }}) }}
+                        <div class="input-group-append">
+                            <span class="input-group-text">&euro;</span>
+                        </div>
+                    </div>
+                    {{ form_errors(form.total) }}
+                </div>
+            </div>
+            <div class="invoice-line-delete">
+                {{ form_row(button_delete, { label: 'X', attr: { class: 'btn btn-outline-danger', style: 'margin-top: 28px' } }) }}
+            </div>
+        </div>
+    <style>
+
+    </style>
+{% endblock %}
+
+

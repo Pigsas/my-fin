@@ -1,0 +1,11 @@
+.invoice-line {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr 1fr 1fr 1fr 1fr 40px;
+    grid-template-rows: 1fr;
+    gap: 10px;
+}
+
+.invoice-line .ts-wrapper.form-control, .invoice-line .ts-wrapper.form-select {
+    height: 44px;
+}

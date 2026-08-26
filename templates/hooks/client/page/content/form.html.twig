@@ -1,0 +1,23 @@
+{% set form = hookable_metadata.context.form %}
+
+{% form_theme form '@SyliusBootstrapAdminUi/shared/form_theme.html.twig' %}
+
+{{ form_row(form.name) }}
+{{ form_row(form.address) }}
+<div class="row">
+    <div class="col-6">
+        {{ form_row(form.code) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(form.vatCode) }}
+    </div>
+</div>
+{{ form_row(form.contact) }}
+<div class="row">
+    <div class="col-6">
+        {{ form_row(form.email) }}
+    </div>
+    <div class="col-6">
+        {{ form_row(form.mobile) }}
+    </div>
+</div>

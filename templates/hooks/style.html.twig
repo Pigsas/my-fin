@@ -1,0 +1,69 @@
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: none;
+    }
+
+    :root {
+        --tblr-font-sans-serif: system-ui, Roboto, sans-serif
+    }
+    .invoice-line {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 4fr 1.5fr 1fr 1fr 1fr 40px;
+        grid-template-rows: 1fr;
+        gap: 10px;
+    }
+
+    .invoice-line .ts-wrapper.form-control, .invoice-line .ts-wrapper.form-select {
+        height: 44px;
+    }
+
+    .input-group-text {
+        border-radius: 0 var(--tblr-border-radius) var(--tblr-border-radius) 0;
+        height: 100%;
+        border-color: var(--tblr-border-color);
+    }
+
+    input:read-only {
+        color: #6c757d;
+        user-select: none;
+        background-color: var(--tblr-bg-surface-secondary);
+        opacity: 1;
+    }
+    input:read-only:focus {
+        color: #6c757d;
+        user-select: none;
+        background-color: var(--tblr-bg-surface-secondary);
+        opacity: 1;
+        border: var(--tblr-border-width) solid #ced4da;
+    }
+
+    @media screen and (max-width: 768px){
+        .invoice-line {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .accordion .accordion-item .accordion-header:hover{
+        background: unset;
+    }
+
+</style>
+
+<script>
+    function calculateTotal(priceEl, discountEl, amountEl, totalEl) {
+        const price = ((priceEl.value??0) - (priceEl.value??0) * (discountEl.value??0) / 100) * (amountEl.value??0)
+        console.log(price)
+        totalEl.value = price.toFixed(2)
+    }
+</script>

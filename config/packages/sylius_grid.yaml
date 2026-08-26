@@ -1,0 +1,4 @@
+sylius_grid:
+    templates:
+        action:
+            printInvoice: "grid/action/print_invoice.html.twig"

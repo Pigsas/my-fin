@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
+
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+# See also https://symfony.com/doc/current/service_container/import.html
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    locale: 'en'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Sylius\RedirectHandler\RefererOverrideRedirectHandler:
+        decorates: sylius.resource_controller.redirect_handler
+        arguments:
+            - '@.inner'
+
+    app.client.form.type:
+        class: App\Form\ClientFormType
+        tags:
+            - { name: form.type }
+        arguments: [ '%app.model.client.class%' ]
+
+    app.invoice.form.type:
+        class: App\Form\InvoiceFormType
+        tags:
+            - { name: form.type }
+        arguments: [ '%app.model.invoice.class%' ]
+
+    app.series.form.type:
+        class: App\Form\SeriesFormType
+        tags:
+            - { name: form.type }
+        arguments: [ '%app.model.series.class%' ]
+
+    app.service.form.type:
+        class: App\Form\ServiceFormType
+        tags:
+            - { name: form.type }
+        arguments: [ '%app.model.service.class%' ]
+
+    app.expense.form.type:
+        class: App\Form\ExpenseFormType
+        tags:
+            - { name: form.type }
+        arguments: [ '%app.model.expense.class%' ]
+
+    App\Twig\UserDropdownComponent:
+        decorates: 'sylius_bootstrap_admin_ui.twig.component.navbar.user_dropdown'
+        arguments:
+            $inner: '@.inner'
+        tags:
+            - { name: 'twig.component', key: 'sylius_bootstrap_admin_ui:navbar:user_dropdown', template: '@SyliusBootstrapAdminUi/shared/components/navbar/user.html.twig' }

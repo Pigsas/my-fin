@@ -1,0 +1,21 @@
+services:
+  nginx.symfony:
+    container_name: nginx.symfony
+    build: './nginx'
+    volumes:
+      - ../:/code
+    ports:
+      - 8000:80
+
+  php.symfony:
+    container_name: php.symfony
+    build: './php8.4'
+    volumes:
+      - ../:/code
+      - type: bind
+        source: ../.docker/php-data/custom.ini
+        target: /usr/local/etc/php/conf.d/custom.ini
+    ports:
+      - 9000:9000 # Debuger PORT
+    extra_hosts:
+      - host.docker.internal:host-gateway
