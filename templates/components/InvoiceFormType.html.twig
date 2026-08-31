@@ -17,6 +17,11 @@
         <div class="col">
             {{ form_row(form.client) }}
         </div>
+        <div class="col-auto d-flex align-items-center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#clientCreateModal">
+                {{ 'sylius.ui.add'|trans }}
+            </button>
+        </div>
     </div>
 
 

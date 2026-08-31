@@ -10,10 +10,12 @@ use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
 use Sylius\Bundle\GridBundle\Builder\Field\DateTimeField;
 use Sylius\Bundle\GridBundle\Builder\Field\EnumField;
 use Sylius\Bundle\GridBundle\Builder\Field\StringField;
+use Sylius\Bundle\GridBundle\Builder\Field\TwigField;
 use Sylius\Bundle\GridBundle\Builder\Filter\EnumFilter;
 use Sylius\Bundle\GridBundle\Builder\Filter\StringFilter;
 use Sylius\Component\Grid\Attribute\AsGrid;
 use Sylius\Component\Grid\Builder\GridBuilderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsGrid(
     resourceClass: Invoice::class,
@@ -21,6 +23,9 @@ use Sylius\Component\Grid\Builder\GridBuilderInterface;
 )]
 final class InvoiceGrid
 {
+    public function __construct(private readonly TranslatorInterface $translator)
+    { }
+
     public function __invoke(GridBuilderInterface $gridBuilder): void
     {
         $gridBuilder
@@ -44,12 +49,14 @@ final class InvoiceGrid
                     ->setPath('client.name')
                     ->setLabel('app.ui.client')
                     ->setSortable(true),
-                EnumField::create('status')
+                TwigField::create('status', 'hooks/invoice/grid/field/status.html.twig')
                     ->setLabel('app.ui.status')
-                    ->setSortable(true),
-                StringField::create('total')
+                    ->setSortable(true)
+                    ->setPath('status'),
+                TwigField::create('total', 'hooks/invoice/grid/field/money.html.twig')
                     ->setLabel('app.ui.total')
-                    ->setSortable(false),
+                    ->setSortable(false)
+                    ->setPath('total'),
                 DateTimeField::create('paidAt', 'Y-m-d')
                     ->setLabel('app.ui.paid')
                     ->setSortable(true),
@@ -59,7 +66,7 @@ final class InvoiceGrid
             )
             ->withItemActions(
                 Action::create('printInvoice', 'printInvoice')
-                    ->setLabel('app.ui.print_invoice')
+                    ->setLabel($this->translator->trans('app.ui.print_invoice'))
                     ->setOptions([
                         'link' => [
                             'route' => 'app_invoice_print',

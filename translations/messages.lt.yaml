@@ -72,7 +72,7 @@ app.ui.address: Adresas
 app.ui.contact: Kontaktas
 app.ui.email: El. paštas
 app.ui.mobile: Mobilus telefonas
-app.ui.document_number: Documento numeris
+app.ui.document_number: Dokumento numeris
 app.ui.date: Data
 app.ui.status: Būsena
 app.ui.total: Iš viso
@@ -137,3 +137,9 @@ app.ui.profile: Profilis
 app.ui.api_token: API raktas
 sylius.ui.profile: Profilis
 sylius.ui.settings: Nustatymai
+app.ui.notes: Pastabos
+app.ui.invoice_type: Sąskaitos tipas
+app.ui.counter: Skaitliukas
+app.ui.client_was_created: Klientas buvo sukurtas
+sylius.ui.add: Pridėti
+app.ui.print_invoice: Spausdinti sąskaitą

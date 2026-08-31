@@ -41,10 +41,14 @@ sylius_twig_hooks:
         'sylius_admin.invoice.create.content':
             form:
                 template: 'hooks/invoice/page/content/form.html.twig'
+            client_modal:
+                template: 'hooks/invoice/page/content/client_modal.html.twig'
 
         'sylius_admin.invoice.update.content':
             form:
                 template: 'hooks/invoice/page/content/form.html.twig'
+            client_modal:
+                template: 'hooks/invoice/page/content/client_modal.html.twig'
 
         'sylius_admin.service.create.content.form.sections':
             general:
@@ -54,6 +58,10 @@ sylius_twig_hooks:
             general:
                 template: 'hooks/service/page/content/form.html.twig'
 
+        'sylius_admin.expense.create.content':
+            client_modal:
+                template: 'hooks/expense/page/content/client_modal.html.twig'
+
         'sylius_admin.expense.create.content.form.sections':
             general:
                 template: 'hooks/expense/page/content/form.html.twig'
@@ -61,6 +69,10 @@ sylius_twig_hooks:
         'sylius_admin.expense.update.content.form.sections':
             general:
                 template: 'hooks/expense/page/content/form.html.twig'
+
+        'sylius_admin.expense.update.content':
+            client_modal:
+                template: 'hooks/expense/page/content/client_modal.html.twig'
 
         'sylius_admin.journal.index.content.grid':
             body:

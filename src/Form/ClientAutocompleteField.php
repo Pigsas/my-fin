@@ -20,7 +20,8 @@ class ClientAutocompleteField extends AbstractType
 
             // choose which fields to use in the search
             // if not passed, *all* fields are used
-             'searchable_fields' => ['name', 'code', 'pvmCode'],
+             'searchable_fields' => ['name', 'code', 'vatCode', 'id'],
+            'choice_value' => 'id',
 
             // 'security' => 'ROLE_SOMETHING',
         ]);

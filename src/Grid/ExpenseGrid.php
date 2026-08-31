@@ -10,6 +10,7 @@ use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
 use Sylius\Bundle\GridBundle\Builder\Field\DateTimeField;
 use Sylius\Bundle\GridBundle\Builder\Field\EnumField;
 use Sylius\Bundle\GridBundle\Builder\Field\StringField;
+use Sylius\Bundle\GridBundle\Builder\Field\TwigField;
 use Sylius\Bundle\GridBundle\Builder\Filter\EnumFilter;
 use Sylius\Bundle\GridBundle\Builder\Filter\StringFilter;
 use Sylius\Component\Grid\Attribute\AsGrid;
@@ -44,12 +45,14 @@ final class ExpenseGrid
                     ->setPath('client.name')
                     ->setLabel('app.ui.client')
                     ->setSortable(true),
-                EnumField::create('status')
+                TwigField::create('status', 'hooks/invoice/grid/field/status.html.twig')
                     ->setLabel('app.ui.status')
-                    ->setSortable(true),
-                StringField::create('total')
+                    ->setSortable(true)
+                    ->setPath('status'),
+                TwigField::create('total', 'hooks/expense/grid/field/money.html.twig')
                     ->setLabel('app.ui.total')
-                    ->setSortable(false),
+                    ->setSortable(false)
+                    ->setPath('total'),
             )
             ->withMainActions(
                 CreateAction::create(),

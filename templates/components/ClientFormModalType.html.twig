@@ -1,0 +1,72 @@
+<div{{ attributes }}>
+    <!-- Modal -->
+    {{ form_start(form, {
+        attr: {
+            novalidate: '',
+            'data-action': 'live#action:prevent',
+            'data-live-action-param': 'create'
+        }
+    }) }}
+    <div class="modal fade" id="clientCreateModal" tabindex="-1" aria-labelledby="clientCreateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ 'sylius.ui.new'|trans }} {{ 'app.ui.client'|trans }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% form_theme form '@SyliusBootstrapAdminUi/shared/form_theme.html.twig' %}
+
+
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.address) }}
+                    <div class="row">
+                        <div class="col-6">
+                            {{ form_row(form.code) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_row(form.vatCode) }}
+                        </div>
+                    </div>
+                    {{ form_row(form.contact) }}
+                    <div class="row">
+                        <div class="col-6">
+                            {{ form_row(form.email) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_row(form.mobile) }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">{{ 'sylius.ui.cancel'|trans }}</button>
+                    <button type="submit" class="btn btn-primary">{{ 'sylius.ui.create'|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+    <script>
+        window.addEventListener('client-form-modal:close', function (event) {
+            const modalElement = document.getElementById('clientCreateModal');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+
+            modal.hide();
+
+            const selectElement = document.getElementById('{{ selectId }}');
+            selectElement.tomselect.clearCache()
+            selectElement.tomselect.load(event.detail.id)
+
+            selectElement.tomselect.on('load', function handler(options) {
+                const id = event.detail.id
+                selectElement.tomselect.off('load', handler);
+
+                if (selectElement.tomselect.options[id]) {
+                    selectElement.tomselect.addItem(id, true);
+                }
+            });
+        });
+    </script>
+</div>

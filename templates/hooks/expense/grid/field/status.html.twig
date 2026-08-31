@@ -1,0 +1,7 @@
+{% if data.value === 'paid' %}
+    <span class="badge bg-success text-white">{{ data|trans }}</span>
+{% elseif data.value === 'not_paid' %}
+    <span class="badge bg-warning text-dark">{{ data|trans }}</span>
+{% else %}
+    {{ data|trans }}
+{% endif %}

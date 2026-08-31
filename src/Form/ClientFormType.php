@@ -17,21 +17,27 @@ class ClientFormType extends AbstractResourceType
             ])
             ->add('address', TextType::class, [
                 'label' => 'app.ui.address',
+                'required' => false,
             ])
             ->add('code', TextType::class, [
                 'label' => 'app.ui.code',
+                'required' => false,
             ])
             ->add('vatCode', TextType::class, [
                 'label' => 'app.ui.vat_code',
+                'required' => false,
             ])
             ->add('contact', TextType::class, [
                 'label' => 'app.ui.contact',
+                'required' => false,
             ])
             ->add('email', EmailType::class, [
                 'label' => 'app.ui.email',
+                'required' => false,
             ])
             ->add('mobile', TextType::class, [
                 'label' => 'app.ui.mobile',
+                'required' => false,
             ])
         ;
     }

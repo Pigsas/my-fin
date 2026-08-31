@@ -22,6 +22,7 @@ class ServiceFormType extends AbstractResourceType
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'app.ui.comment',
+                'required' => false,
             ]);
     }
 

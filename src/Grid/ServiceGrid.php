@@ -6,6 +6,7 @@ use App\Entity\Service;
 use Sylius\Bundle\GridBundle\Builder\Action\CreateAction;
 use Sylius\Bundle\GridBundle\Builder\Action\UpdateAction;
 use Sylius\Bundle\GridBundle\Builder\Field\StringField;
+use Sylius\Bundle\GridBundle\Builder\Field\TwigField;
 use Sylius\Bundle\GridBundle\Builder\Filter\StringFilter;
 use Sylius\Component\Grid\Attribute\AsGrid;
 use Sylius\Component\Grid\Builder\GridBuilderInterface;
@@ -28,9 +29,10 @@ final class ServiceGrid
                 StringField::create('name')
                     ->setLabel('app.ui.name')
                     ->setSortable(true),
-                StringField::create('price')
+                TwigField::create('price', 'hooks/service/grid/field/money.html.twig')
                     ->setLabel('app.ui.price')
-                    ->setSortable(true),
+                    ->setSortable(true)
+                    ->setPath('price'),
             )
             ->withMainActions(
                 CreateAction::create(),
